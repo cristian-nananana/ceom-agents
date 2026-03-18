@@ -17,11 +17,9 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        working-directory: kenta-macmini/aurabot-web
         run: npm ci
 
       - name: Build
-        working-directory: kenta-macmini/aurabot-web
         run: npm run build
         env:
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
@@ -34,4 +32,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy kenta-macmini/aurabot-web/out --project-name=sekrebot-web --branch=main
+          command: pages deploy out --project-name=sekrebot-web --branch=main
