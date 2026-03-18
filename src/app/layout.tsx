@@ -1,28 +1,84 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "SekreBot",
+  url: "https://sekrebot.cl",
+  logo: "https://sekrebot.cl/logo.png",
+  image: "https://sekrebot.cl/og-image.png",
+  description:
+    "Mac Mini con inteligencia artificial preinstalada y lista para usar. Tu secretario IA personal en Chile. Sin tecnicismos. Con soporte real.",
+  telephone: "+56963926061",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+56963926061",
+    contactType: "customer support",
+    availableLanguage: "Spanish",
+    contactOption: "TollFree",
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "CL",
+    addressRegion: "Región Metropolitana",
+  },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Región Metropolitana, Chile" },
+    { "@type": "AdministrativeArea", name: "Región de Valparaíso, Chile" },
+    { "@type": "AdministrativeArea", name: "Región de O'Higgins, Chile" },
+    { "@type": "AdministrativeArea", name: "Región del Maule, Chile" },
+    { "@type": "AdministrativeArea", name: "Región del Biobío, Chile" },
+    { "@type": "AdministrativeArea", name: "Región de Coquimbo, Chile" },
+  ],
+  sameAs: ["https://wa.me/56963926061"],
+  priceRange: "$$",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ],
+    opens: "09:00",
+    closes: "18:00",
+  },
+  offers: {
+    "@type": "Offer",
+    name: "SekreBot — Mac Mini con IA personal",
+    description:
+      "Mac Mini con OpenClaw preinstalado y configurado. Tu asistente IA personal listo para usar.",
+    url: "https://sekrebot.cl",
+    priceCurrency: "CLP",
+    eligibleRegion: {
+      "@type": "Country",
+      name: "Chile",
+    },
+  },
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://sekrebot.cl"),
   title: {
-    default: "SekreBot — Tu secretario IA personal. En tu casa. Hoy.",
+    default: "SekreBot — Tu secretario IA personal | Chile",
     template: "%s | SekreBot",
   },
   description:
-    "Mac Mini con inteligencia artificial preinstalada y lista para usar. Sin tecnicismos. Con soporte real. Envíos a regiones IV–VIII de Chile en 48 horas.",
+    "Mac Mini con inteligencia artificial preinstalada y lista para usar. Tu secretario IA personal en Chile. Sin tecnicismos. Soporte real. Envíos a regiones IV–VIII en 48 horas.",
   keywords: [
     "secretario IA Chile",
     "asistente IA Chile",
@@ -32,6 +88,8 @@ export const metadata: Metadata = {
     "SekreBot",
     "IA personal Chile",
     "automatización negocios Chile",
+    "OpenClaw Chile",
+    "IA local privada",
   ],
   authors: [{ name: "SekreBot", url: "https://sekrebot.cl" }],
   creator: "SekreBot",
@@ -41,9 +99,9 @@ export const metadata: Metadata = {
     locale: "es_CL",
     url: "https://sekrebot.cl",
     siteName: "SekreBot",
-    title: "SekreBot — Tu secretario IA personal. En tu casa. Hoy.",
+    title: "SekreBot — Tu secretario IA personal | Chile",
     description:
-      "Mac Mini con inteligencia artificial preinstalada y lista para usar. Sin tecnicismos. Con soporte real. Envíos en 48h.",
+      "Mac Mini con IA preinstalada. Sin tecnicismos. Con soporte real. Entrega en 48h. Tu asistente IA personal en casa.",
     images: [
       {
         url: "/og-image.png",
@@ -55,7 +113,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SekreBot — Tu secretario IA personal. En tu casa. Hoy.",
+    title: "SekreBot — Tu secretario IA personal | Chile",
     description:
       "Mac Mini con IA preinstalada. Sin tecnicismos. Con soporte real. Entrega en 48h.",
     images: ["/og-image.png"],
@@ -84,6 +142,10 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {GA_ID && (
           <>
             <Script
@@ -104,7 +166,7 @@ export default function RootLayout({
         )}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0f1e] text-[#f9fafb]`}
+        className={`${inter.variable} antialiased bg-[#0a0f1e] text-[#f9fafb]`}
         suppressHydrationWarning
       >
         {children}
