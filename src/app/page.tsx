@@ -138,7 +138,7 @@ const PRICING_PLANS: PricingPlan[] = [
   {
     name: "M4 Básico",
     spec: "16 GB · 256 GB",
-    price: "839.990",
+    price: "874.990",
     features: [
       "IA personal lista al encender",
       "Soporte básico WhatsApp",
@@ -150,7 +150,7 @@ const PRICING_PLANS: PricingPlan[] = [
   {
     name: "M4 Avanzado",
     spec: "24 GB · 512 GB",
-    price: "1.079.990",
+    price: "1.124.990",
     features: [
       "Todo lo del plan Básico",
       "Mayor velocidad de IA",
@@ -162,7 +162,7 @@ const PRICING_PLANS: PricingPlan[] = [
   {
     name: "M4 Pro",
     spec: "24 GB · 512 GB Pro",
-    price: "1.679.990",
+    price: "1.749.990",
     features: [
       "Todo lo del plan Avanzado",
       "Máximo rendimiento IA",
@@ -207,12 +207,12 @@ const SUB_PLANS: SubPlan[] = [
 ];
 
 const COVERAGE: CoverageRegion[] = [
-  { region: "IV Coquimbo", city: "La Serena", envio: "$70.000" },
+  { region: "IV Coquimbo", city: "La Serena", envio: "$85.000" },
   { region: "V Valparaíso", city: "Viña del Mar", envio: "$25.000" },
   { region: "RM Santiago", city: "Santiago", envio: "$15.000" },
   { region: "VI O'Higgins", city: "Rancagua", envio: "$20.000" },
   { region: "VII Maule", city: "Talca", envio: "$45.000" },
-  { region: "VIII Biobío", city: "Concepción", envio: "$75.000" },
+  { region: "VIII Biobío", city: "Concepción", envio: "$90.000" },
 ];
 
 const FAQ: FaqItem[] = [
@@ -832,6 +832,60 @@ export default function Home() {
       {/* ════════════════════════════════════════════════
           SOPORTE MENSUAL — Suscripción opcional
       ════════════════════════════════════════════════ */}
+            {/* ════════════════════════════════════════════════
+          CONFIDENCIALIDAD + MODELO DE IA + SUSCRIPCIÓN
+      ════════════════════════════════════════════════ */}
+      <section className="py-24 sm:py-32 px-6 sm:px-8" style={{ background: "#111111" }}>
+        <div className="max-w-5xl mx-auto">
+          <SectionTitle
+            eyebrow="Tres razones que marcan la diferencia"
+            title="Lo que hace a SekreBot único"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Confidencial */}
+            <div className="p-10 border" style={{ borderColor: "rgba(255,255,255,0.06)", background: "#0D0D0D" }}>
+              <div className="text-5xl mb-6">🔒</div>
+              <h3 className="text-white font-bold text-xl uppercase tracking-wide mb-4">100% confidencial</h3>
+              <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: "1.8" }}>
+                Tu asistente corre en tu propia casa. Nadie sabe lo que le preguntas. Ni nosotros.
+                Lo que pasa en SekreBot, queda en SekreBot.
+              </p>
+              <p className="mt-4 text-sm" style={{ color: "#00D4C8" }}>
+                ¿Quieres máxima privacidad? Configuramos un modelo que trabaja 100% sin internet.
+              </p>
+            </div>
+            {/* Modelo a elección */}
+            <div className="p-10 border" style={{ borderColor: "#00D4C8", background: "#0D0D0D" }}>
+              <div className="text-5xl mb-6">🧠</div>
+              <h3 className="text-white font-bold text-xl uppercase tracking-wide mb-4">Tú eliges el modelo de IA</h3>
+              <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: "1.8" }}>
+                ¿El más potente? ¿El más rápido? ¿El que no necesita internet?
+                Te explicamos las diferencias y configuramos el que más se adapta a ti.
+              </p>
+              <ul className="mt-4 space-y-1 text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
+                <li>🤖 GPT-4o — el más conocido</li>
+                <li>🧩 Claude — ideal para redacción</li>
+                <li>🔐 Llama local — sin internet, máxima privacidad</li>
+              </ul>
+            </div>
+            {/* Suscripción gestionada */}
+            <div className="p-10 border" style={{ borderColor: "rgba(255,255,255,0.06)", background: "#0D0D0D" }}>
+              <div className="text-5xl mb-6">💳</div>
+              <h3 className="text-white font-bold text-xl uppercase tracking-wide mb-4">Sin cuentas extranjeras</h3>
+              <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: "1.8" }}>
+                La suscripción a los modelos de IA la pagamos nosotros.
+                Tú no necesitas tarjeta en USD, ni cuenta en OpenAI, ni configurar APIs.
+              </p>
+              <p className="mt-4 text-sm" style={{ color: "#00D4C8" }}>
+                Un precio fijo en pesos chilenos. Sin sorpresas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="h-px" style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)" }} />
+
       <section
         className="py-24 sm:py-32 px-6 sm:px-8"
         style={{ background: "#0D0D0D" }}
