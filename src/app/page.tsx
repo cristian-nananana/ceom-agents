@@ -105,42 +105,42 @@ export default function Home() {
       </nav>
 
       {/* ── HERO ───────────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 px-5 overflow-hidden">
+      <section className="relative pt-40 sm:pt-48 pb-28 sm:pb-36 px-6 sm:px-8 overflow-hidden">
         {/* Ambient glow */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(0,212,200,0.04) 0%, transparent 60%)" }}
         />
 
-        <div className="max-w-4xl mx-auto text-center relative">
+        <div className="max-w-5xl mx-auto text-center relative">
           {/* Section label */}
           <p
-            className="text-xs uppercase font-semibold mb-5 tracking-[0.2em]"
+            className="text-xs uppercase font-semibold mb-6 tracking-[0.2em]"
             style={{ color: CYAN }}
           >
             Asistente IA Personal
           </p>
 
           {/* H1 */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-5">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.05] mb-8 max-w-4xl mx-auto">
             Diseñamos tu asistente IA.
             <br />
             Uno que{" "}
             <span style={{ color: CYAN }}>trabaja para ti.</span>
           </h1>
 
-          <p className="text-[#888] text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-gray-400 text-lg max-w-xl mx-auto mb-12 leading-relaxed">
             Mac Mini con IA preinstalada. Listo al encender, en español,
             con soporte real por WhatsApp.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
             <a
               href={WA_MSG("Hola! Quiero pedir mi SekreBot 🤖")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 text-sm font-semibold px-7 py-3.5 rounded-full transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 text-sm font-semibold px-8 py-4 rounded-full transition-all duration-200"
               style={{
                 border: `1px solid ${CYAN}`,
                 color: CYAN,
@@ -154,7 +154,7 @@ export default function Home() {
             </a>
             <a
               href="#precios"
-              className="inline-flex items-center justify-center gap-2 text-sm text-[#888] hover:text-white transition-colors px-7 py-3.5"
+              className="inline-flex items-center justify-center gap-2 text-base text-gray-400 hover:text-white transition-colors px-8 py-4"
             >
               Ver precios <ArrowRight className="w-4 h-4" />
             </a>
@@ -162,16 +162,19 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SEPARATOR ──────────────────────────────────────────── */}
+      <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
       {/* ── LOGOS BAR ──────────────────────────────────────────── */}
       <section
-        className="py-10 px-5"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+        className="py-12 px-6 sm:px-8"
+        style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
       >
-        <div className="max-w-4xl mx-auto">
-          <p className="text-center text-xs text-[#555] uppercase tracking-[0.15em] mb-8">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-center text-xs text-[#555] uppercase tracking-[0.15em] mb-10">
             Funciona con tecnología de
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
+          <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16">
             {[
               { name: "Apple", label: "Apple" },
               { name: "OpenClaw", label: "OpenClaw" },
@@ -191,64 +194,69 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SEPARATOR ──────────────────────────────────────────── */}
+      <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
       {/* ── STATS / CASOS DE ESTUDIO ────────────────────────────── */}
-      <section id="resultados" className="py-20 sm:py-28 px-5">
+      <section id="resultados" className="py-32 sm:py-40 px-6 sm:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Section header */}
-          <div className="mb-14">
-            <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-3" style={{ color: CYAN }}>
+          <div className="mb-20 sm:mb-24">
+            <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-4" style={{ color: CYAN }}>
               Resultados
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight mb-6">
               Resultados que ya genera SekreBot
             </h2>
           </div>
 
           {/* Cards */}
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-8">
 
             {/* Card 1 */}
             <div
-              className="rounded-2xl p-7 sm:p-10"
+              className="rounded-2xl p-10 sm:p-12"
               style={{ background: "#111111", border: "1px solid rgba(255,255,255,0.06)" }}
             >
-              <div className="flex flex-col md:flex-row md:gap-12 gap-8">
+              <div className="flex flex-col md:flex-row md:gap-12 gap-10">
                 {/* Left: description */}
                 <div className="flex-1">
-                  <p className="text-xs uppercase tracking-[0.15em] text-[#555] mb-3">Caso 01</p>
-                  <h3 className="text-lg sm:text-xl font-bold mb-3">Profesional Independiente</h3>
-                  <p className="text-[#888] text-sm sm:text-base leading-relaxed max-w-sm">
+                  <p className="text-xs uppercase tracking-[0.15em] text-[#555] mb-4">Caso 01</p>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4">Profesional Independiente</h3>
+                  <p className="text-gray-400 text-lg leading-relaxed max-w-sm">
                     Consultor que usa SekreBot para redactar propuestas, gestionar emails y generar análisis de mercado. Ahorra horas cada día sin pagar suscripciones en la nube.
                   </p>
                 </div>
                 {/* Right: stats */}
-                <div className="flex flex-row md:flex-col gap-8 md:gap-6 md:min-w-[200px] md:border-l md:border-white/5 md:pl-10">
-                  <div>
+                <div className="flex flex-row md:flex-col gap-8 md:gap-0 md:min-w-[220px] md:border-l md:border-white/5 md:pl-12">
+                  <div className="md:py-4">
                     <div
-                      className="text-5xl sm:text-6xl font-bold"
-                      style={{ color: CYAN, textShadow: "0 0 20px rgba(0,212,200,0.4)" }}
+                      className="text-6xl sm:text-7xl font-black mb-1"
+                      style={{ color: CYAN, textShadow: "0 0 30px rgba(0,212,200,0.6), 0 0 60px rgba(0,212,200,0.2)" }}
                     >
                       2h
                     </div>
-                    <div className="text-[#888] text-xs mt-1">ahorro diario</div>
+                    <div className="text-sm text-gray-500 mt-1">ahorro diario</div>
                   </div>
-                  <div>
+                  <hr className="border-white/5 my-6 hidden md:block" />
+                  <div className="md:py-4">
                     <div
-                      className="text-5xl sm:text-6xl font-bold"
-                      style={{ color: CYAN, textShadow: "0 0 20px rgba(0,212,200,0.4)" }}
+                      className="text-6xl sm:text-7xl font-black mb-1"
+                      style={{ color: CYAN, textShadow: "0 0 30px rgba(0,212,200,0.6), 0 0 60px rgba(0,212,200,0.2)" }}
                     >
                       30%
                     </div>
-                    <div className="text-[#888] text-xs mt-1">más clientes</div>
+                    <div className="text-sm text-gray-500 mt-1">más clientes</div>
                   </div>
-                  <div>
+                  <hr className="border-white/5 my-6 hidden md:block" />
+                  <div className="md:py-4">
                     <div
-                      className="text-5xl sm:text-6xl font-bold"
-                      style={{ color: CYAN, textShadow: "0 0 20px rgba(0,212,200,0.4)" }}
+                      className="text-6xl sm:text-7xl font-black mb-1"
+                      style={{ color: CYAN, textShadow: "0 0 30px rgba(0,212,200,0.6), 0 0 60px rgba(0,212,200,0.2)" }}
                     >
                       $0
                     </div>
-                    <div className="text-[#888] text-xs mt-1">suscripciones cloud</div>
+                    <div className="text-sm text-gray-500 mt-1">suscripciones cloud</div>
                   </div>
                 </div>
               </div>
@@ -256,46 +264,48 @@ export default function Home() {
 
             {/* Card 2 */}
             <div
-              className="rounded-2xl p-7 sm:p-10"
+              className="rounded-2xl p-10 sm:p-12"
               style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.06)" }}
             >
-              <div className="flex flex-col md:flex-row md:gap-12 gap-8">
+              <div className="flex flex-col md:flex-row md:gap-12 gap-10">
                 {/* Left: description */}
                 <div className="flex-1">
-                  <p className="text-xs uppercase tracking-[0.15em] text-[#555] mb-3">Caso 02</p>
-                  <h3 className="text-lg sm:text-xl font-bold mb-3">PyME — Comercio Local</h3>
-                  <p className="text-[#888] text-sm sm:text-base leading-relaxed max-w-sm">
+                  <p className="text-xs uppercase tracking-[0.15em] text-[#555] mb-4">Caso 02</p>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4">PyME — Comercio Local</h3>
+                  <p className="text-gray-400 text-lg leading-relaxed max-w-sm">
                     Tienda que usa SekreBot para gestionar atención al cliente, controlar inventario y redactar comunicaciones. Tres empleados hacen más con menos tiempo.
                   </p>
                 </div>
                 {/* Right: stats */}
-                <div className="flex flex-row md:flex-col gap-8 md:gap-6 md:min-w-[200px] md:border-l md:border-white/5 md:pl-10">
-                  <div>
+                <div className="flex flex-row md:flex-col gap-8 md:gap-0 md:min-w-[220px] md:border-l md:border-white/5 md:pl-12">
+                  <div className="md:py-4">
                     <div
-                      className="text-5xl sm:text-6xl font-bold"
-                      style={{ color: CYAN, textShadow: "0 0 20px rgba(0,212,200,0.4)" }}
+                      className="text-6xl sm:text-7xl font-black mb-1"
+                      style={{ color: CYAN, textShadow: "0 0 30px rgba(0,212,200,0.6), 0 0 60px rgba(0,212,200,0.2)" }}
                     >
                       3
                     </div>
-                    <div className="text-[#888] text-xs mt-1">empleados optimizados</div>
+                    <div className="text-sm text-gray-500 mt-1">empleados optimizados</div>
                   </div>
-                  <div>
+                  <hr className="border-white/5 my-6 hidden md:block" />
+                  <div className="md:py-4">
                     <div
-                      className="text-5xl sm:text-6xl font-bold"
-                      style={{ color: CYAN, textShadow: "0 0 20px rgba(0,212,200,0.4)" }}
+                      className="text-6xl sm:text-7xl font-black mb-1"
+                      style={{ color: CYAN, textShadow: "0 0 30px rgba(0,212,200,0.6), 0 0 60px rgba(0,212,200,0.2)" }}
                     >
                       80%
                     </div>
-                    <div className="text-[#888] text-xs mt-1">menos tiempo en admin</div>
+                    <div className="text-sm text-gray-500 mt-1">menos tiempo en admin</div>
                   </div>
-                  <div>
+                  <hr className="border-white/5 my-6 hidden md:block" />
+                  <div className="md:py-4">
                     <div
-                      className="text-4xl sm:text-5xl font-bold"
-                      style={{ color: CYAN, textShadow: "0 0 20px rgba(0,212,200,0.4)" }}
+                      className="text-5xl sm:text-6xl font-black mb-1"
+                      style={{ color: CYAN, textShadow: "0 0 30px rgba(0,212,200,0.6), 0 0 60px rgba(0,212,200,0.2)" }}
                     >
                       $791K
                     </div>
-                    <div className="text-[#888] text-xs mt-1">ahorro anual estimado</div>
+                    <div className="text-sm text-gray-500 mt-1">ahorro anual estimado</div>
                   </div>
                 </div>
               </div>
@@ -305,17 +315,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SEPARATOR ──────────────────────────────────────────── */}
+      <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
       {/* ── FEATURES ───────────────────────────────────────────── */}
-      <section id="features" className="py-20 sm:py-24 px-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+      <section id="features" className="py-32 sm:py-40 px-6 sm:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-14">
-            <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-3" style={{ color: CYAN }}>
+          <div className="mb-20 sm:mb-24">
+            <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-4" style={{ color: CYAN }}>
               Funciones
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Listo al encender</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight mb-6">Listo al encender</h2>
+            <p className="text-gray-400 text-lg max-w-xl">Todo configurado para que solo conectes y empieces a trabajar con tu IA.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
             {[
               {
                 icon: Cpu,
@@ -333,33 +347,36 @@ export default function Home() {
                 desc: "Una persona real al otro lado del WhatsApp. Respondemos en horas, no en tickets automatizados.",
               },
             ].map((f) => (
-              <div key={f.title}>
+              <div key={f.title} className="p-10 rounded-2xl" style={{ background: "#111111", border: "1px solid rgba(255,255,255,0.06)" }}>
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
                   style={{ background: "rgba(0,212,200,0.08)" }}
                 >
-                  <f.icon className="w-5 h-5" style={{ color: CYAN }} />
+                  <f.icon className="w-6 h-6" style={{ color: CYAN }} />
                 </div>
-                <h3 className="font-bold text-base mb-2">{f.title}</h3>
-                <p className="text-[#888] text-sm leading-relaxed">{f.desc}</p>
+                <h3 className="font-bold text-lg mb-3">{f.title}</h3>
+                <p className="text-gray-400 text-base leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ── SEPARATOR ──────────────────────────────────────────── */}
+      <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
       {/* ── PRECIOS HARDWARE ───────────────────────────────────── */}
-      <section id="precios" className="py-20 sm:py-28 px-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+      <section id="precios" className="py-32 sm:py-40 px-6 sm:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-14">
-            <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-3" style={{ color: CYAN }}>
+          <div className="mb-20 sm:mb-24">
+            <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-4" style={{ color: CYAN }}>
               Planes
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Elige tu equipo</h2>
-            <p className="text-[#888] text-sm mt-2">Mac Mini + SekreBot instalado. Entrega e instalación incluidas.</p>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight mb-6">Elige tu equipo</h2>
+            <p className="text-gray-400 text-lg">Mac Mini + SekreBot instalado. Entrega e instalación incluidas.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 items-start mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 items-start mb-8">
             {[
               {
                 name: "M4 Básico",
@@ -385,12 +402,17 @@ export default function Home() {
             ].map((plan) => (
               <div
                 key={plan.name}
-                className="relative rounded-2xl p-7 flex flex-col"
+                className="relative rounded-2xl p-10 flex flex-col"
                 style={{
                   background: plan.popular ? "#111111" : "#0E0E0E",
                   border: plan.popular
                     ? `1px solid rgba(0,212,200,0.25)`
                     : "1px solid rgba(255,255,255,0.06)",
+                  ...(plan.popular ? {
+                    boxShadow: "0 0 40px rgba(0,212,200,0.08)",
+                    outline: "1px solid rgba(0,212,200,0.30)",
+                    outlineOffset: "-1px",
+                  } : {}),
                 }}
               >
                 {plan.popular && (
@@ -401,18 +423,18 @@ export default function Home() {
                     Más popular
                   </div>
                 )}
-                <div className="mb-6">
-                  <h3 className="font-bold text-base mb-0.5">{plan.name}</h3>
-                  <p className="text-[#555] text-xs">{plan.spec}</p>
+                <div className="mb-8">
+                  <h3 className="font-bold text-lg mb-1">{plan.name}</h3>
+                  <p className="text-gray-500 text-sm">{plan.spec}</p>
                 </div>
-                <div className="mb-6">
-                  <span className="text-3xl font-bold">${plan.price}</span>
-                  <span className="text-[#555] text-xs ml-1.5">CLP</span>
+                <div className="mb-10">
+                  <span className="text-4xl font-bold">${plan.price}</span>
+                  <span className="text-gray-500 text-sm ml-2">CLP</span>
                 </div>
-                <ul className="space-y-2.5 mb-8 flex-1">
+                <ul className="space-y-4 mb-10 flex-1">
                   {plan.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2.5 text-sm text-[#888]">
-                      <Check className="w-3.5 h-3.5 flex-shrink-0" style={{ color: CYAN }} />
+                    <li key={f} className="flex items-center gap-3 text-base text-gray-400">
+                      <Check className="w-4 h-4 flex-shrink-0" style={{ color: CYAN }} />
                       {f}
                     </li>
                   ))}
@@ -421,7 +443,7 @@ export default function Home() {
                   href={WA_MSG(`Hola! Me interesa el SekreBot ${plan.name} ($${plan.price} CLP)`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all duration-200"
+                  className="flex items-center justify-center gap-2 py-4 rounded-xl text-sm font-semibold transition-all duration-200"
                   style={
                     plan.popular
                       ? { background: CYAN, color: "#000" }
@@ -440,24 +462,28 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="text-[#555] text-xs text-center">+ costo de envío según región. Instalación presencial incluida.</p>
+          <p className="text-gray-500 text-sm text-center">+ costo de envío según región. Instalación presencial incluida.</p>
         </div>
       </section>
 
+      {/* ── SEPARATOR ──────────────────────────────────────────── */}
+      <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
       {/* ── SUSCRIPCIÓN ────────────────────────────────────────── */}
       <section
-        className="py-16 sm:py-20 px-5"
-        style={{ background: "#0D0D0D", borderTop: "1px solid rgba(255,255,255,0.06)" }}
+        className="py-32 sm:py-40 px-6 sm:px-8"
+        style={{ background: "#0D0D0D" }}
       >
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-10">
-            <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-3" style={{ color: CYAN }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-20 sm:mb-24">
+            <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-4" style={{ color: CYAN }}>
               Soporte mensual
             </p>
-            <h2 className="text-2xl sm:text-3xl font-bold">Mantén tu IA siempre actualizada</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold leading-tight mb-6">Mantén tu IA siempre actualizada</h2>
+            <p className="text-gray-400 text-lg max-w-xl">Actualizaciones continuas, soporte real y nuevas funciones cada mes.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
             {[
               {
                 name: "Básico",
@@ -480,7 +506,7 @@ export default function Home() {
             ].map((plan) => (
               <div
                 key={plan.name}
-                className="rounded-2xl p-6"
+                className="rounded-2xl p-10"
                 style={{
                   background: plan.highlight ? "#111" : "transparent",
                   border: plan.highlight
@@ -488,15 +514,15 @@ export default function Home() {
                     : "1px solid rgba(255,255,255,0.06)",
                 }}
               >
-                <h3 className="font-bold text-sm mb-1">{plan.name}</h3>
-                <div className="flex items-baseline gap-1 mb-5">
-                  <span className="text-2xl font-bold">${plan.price}</span>
-                  <span className="text-[#555] text-xs">/mes</span>
+                <h3 className="font-bold text-lg mb-2">{plan.name}</h3>
+                <div className="flex items-baseline gap-1 mb-8">
+                  <span className="text-3xl font-bold">${plan.price}</span>
+                  <span className="text-gray-500 text-sm">/mes</span>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-4">
                   {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-xs text-[#888]">
-                      <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: CYAN }} />
+                    <li key={f} className="flex items-start gap-3 text-base text-gray-400">
+                      <Check className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: CYAN }} />
                       {f}
                     </li>
                   ))}
@@ -507,18 +533,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SEPARATOR ──────────────────────────────────────────── */}
+      <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
       {/* ── COBERTURA ──────────────────────────────────────────── */}
-      <section id="cobertura" className="py-20 sm:py-24 px-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-12">
-            <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-3" style={{ color: CYAN }}>
+      <section id="cobertura" className="py-32 sm:py-40 px-6 sm:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-20 sm:mb-24">
+            <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-4" style={{ color: CYAN }}>
               Cobertura
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Entrega regional</h2>
-            <p className="text-[#888] text-sm mt-2">Instalación presencial incluida en todas las regiones.</p>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight mb-6">Entrega regional</h2>
+            <p className="text-gray-400 text-lg">Instalación presencial incluida en todas las regiones.</p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {[
               { region: "IV Coquimbo", city: "La Serena", envio: "$70.000" },
               { region: "V Valparaíso", city: "Viña del Mar", envio: "$25.000" },
@@ -529,31 +558,33 @@ export default function Home() {
             ].map((r) => (
               <div
                 key={r.region}
-                className="rounded-xl p-4 flex items-center justify-between"
+                className="rounded-xl p-5 flex items-center justify-between"
                 style={{ border: "1px solid rgba(255,255,255,0.06)" }}
               >
                 <div>
-                  <div className="text-sm font-semibold">{r.region}</div>
-                  <div className="text-[#555] text-xs mt-0.5">{r.city}</div>
+                  <div className="text-base font-semibold">{r.region}</div>
+                  <div className="text-gray-500 text-sm mt-1">{r.city}</div>
                 </div>
                 <div className="text-right">
-                  <div className="text-xs font-semibold" style={{ color: CYAN }}>{r.envio}</div>
-                  <div className="text-[#555] text-xs">envío</div>
+                  <div className="text-sm font-semibold" style={{ color: CYAN }}>{r.envio}</div>
+                  <div className="text-gray-500 text-xs mt-1">envío</div>
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="text-[#555] text-xs text-center mt-6">
+          <p className="text-gray-500 text-sm text-center mt-8">
             Mínimo 2 equipos por viaje en regiones lejanas.
           </p>
         </div>
       </section>
 
+      {/* ── SEPARATOR ──────────────────────────────────────────── */}
+      <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
       {/* ── CTA FINAL ──────────────────────────────────────────── */}
       <section
-        className="py-24 sm:py-32 px-5 relative overflow-hidden"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+        className="py-40 px-6 sm:px-8 relative overflow-hidden"
       >
         {/* Ambient glow */}
         <div
@@ -562,21 +593,21 @@ export default function Home() {
         />
 
         <div className="max-w-2xl mx-auto text-center relative">
-          <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-5" style={{ color: CYAN }}>
+          <p className="text-xs uppercase font-semibold tracking-[0.2em] mb-6" style={{ color: CYAN }}>
             Empieza hoy
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4 leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 leading-tight">
             ¿Listo para tener tu<br />
             <span style={{ color: CYAN }}>asistente IA?</span>
           </h2>
-          <p className="text-[#888] text-base mb-10">
+          <p className="text-gray-400 text-lg mb-12 leading-relaxed">
             Pide el tuyo hoy. Entrega en 48 horas con instalación incluida.
           </p>
           <a
             href={WA_MSG("Hola! Quiero pedir mi SekreBot 🤖 ¿Cuál me recomiendas para empezar?")}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 text-black font-bold text-base sm:text-lg px-10 py-4 rounded-full transition-all duration-200"
+            className="inline-flex items-center gap-3 text-black font-bold text-lg px-12 py-5 rounded-full transition-all duration-200"
             style={{
               background: CYAN,
               boxShadow: "0 0 30px rgba(0,212,200,0.3), 0 4px 20px rgba(0,212,200,0.15)",
@@ -594,13 +625,13 @@ export default function Home() {
             Escribir al WhatsApp
             <ArrowRight className="w-4 h-4" />
           </a>
-          <p className="text-[#555] text-sm mt-5">+56 9 6392 6061 · Respuesta en minutos</p>
+          <p className="text-gray-500 text-sm mt-6">+56 9 6392 6061 · Respuesta en minutos</p>
         </div>
       </section>
 
       {/* ── FOOTER ─────────────────────────────────────────────── */}
       <footer
-        className="py-10 px-5"
+        className="py-12 px-6 sm:px-8"
         style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
       >
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
