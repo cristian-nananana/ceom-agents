@@ -3,30 +3,27 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches: [main]
-  workflow_dispatch:
 
 jobs:
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
-
+    name: Deploy SekreBot
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: kenta-macmini/aurabot-web/package-lock.json
 
       - name: Install dependencies
+        working-directory: kenta-macmini/aurabot-web
         run: npm ci
 
       - name: Build
+        working-directory: kenta-macmini/aurabot-web
         run: npm run build
         env:
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
@@ -35,11 +32,8 @@ jobs:
           NEXT_PUBLIC_SITE_URL: https://sekrebot.cl
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: sekrebot-web
-          directory: out
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          wranglerVersion: "3"
+          command: pages deploy kenta-macmini/aurabot-web/out --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME }} --branch=main
