@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aurabot.cl/sitemap.xml
+Sitemap: https://sekrebot.cl/sitemap.xml

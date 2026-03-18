@@ -16,31 +16,31 @@ const geistMono = Geist_Mono({
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aurabot.cl"),
+  metadataBase: new URL("https://sekrebot.cl"),
   title: {
-    default: "AuraBot — Tu asistente de IA personal con Mac Mini en Chile",
-    template: "%s | AuraBot",
+    default: "SekreBot — Tu asistente de IA personal con Mac Mini en Chile",
+    template: "%s | SekreBot",
   },
   description:
-    "AuraBot te entrega un Mac Mini con OpenClaw preconfigurado: tu asistente de IA personal listo para usarlo en casa o negocio. Envíos a regiones IV–VIII de Chile.",
+    "SekreBot te entrega un Mac Mini con OpenClaw preconfigurado: tu asistente de IA personal listo para usarlo en casa o negocio. Envíos a regiones IV–VIII de Chile.",
   keywords: [
     "asistente IA Chile",
     "Mac Mini IA",
     "OpenClaw Chile",
     "inteligencia artificial Chile",
     "asistente virtual Chile",
-    "AuraBot",
+    "SekreBot",
     "Mac Mini OpenClaw",
   ],
-  authors: [{ name: "AuraBot", url: "https://aurabot.cl" }],
-  creator: "AuraBot",
-  publisher: "AuraBot",
+  authors: [{ name: "SekreBot", url: "https://sekrebot.cl" }],
+  creator: "SekreBot",
+  publisher: "SekreBot",
   openGraph: {
     type: "website",
     locale: "es_CL",
-    url: "https://aurabot.cl",
-    siteName: "AuraBot",
-    title: "AuraBot — Tu asistente de IA personal con Mac Mini en Chile",
+    url: "https://sekrebot.cl",
+    siteName: "SekreBot",
+    title: "SekreBot — Tu asistente de IA personal con Mac Mini en Chile",
     description:
       "Mac Mini + OpenClaw preconfigurado. Tu asistente de IA personal listo para usarlo desde el primer día. Envíos a regiones IV–VIII.",
     images: [
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AuraBot — Asistente de IA personal en Chile",
+        alt: "SekreBot — Asistente de IA personal en Chile",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AuraBot — Tu asistente de IA personal con Mac Mini en Chile",
+    title: "SekreBot — Tu asistente de IA personal con Mac Mini en Chile",
     description:
       "Mac Mini + OpenClaw preconfigurado. Tu asistente de IA listo desde el primer día.",
     images: ["/og-image.png"],
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://aurabot.cl",
+    canonical: "https://sekrebot.cl",
   },
 };
 

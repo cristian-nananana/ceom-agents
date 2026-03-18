@@ -10,9 +10,9 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "¿Qué es AuraBot exactamente?",
+    question: "¿Qué es SekreBot exactamente?",
     answer:
-      "AuraBot es un Mac Mini con OpenClaw preinstalado y configurado. OpenClaw es una plataforma de IA que te permite tener tu propio asistente inteligente funcionando en tu casa u oficina, de forma privada y sin depender de servicios externos.",
+      "SekreBot es un Mac Mini con OpenClaw preinstalado y configurado. OpenClaw es una plataforma de IA que te permite tener tu propio asistente inteligente funcionando en tu casa u oficina, de forma privada y sin depender de servicios externos.",
   },
   {
     question: "¿Necesito saber de tecnología para usarlo?",
@@ -42,7 +42,7 @@ const faqs: FAQItem[] = [
   {
     question: "¿Mis datos son privados?",
     answer:
-      "Sí. Tu asistente corre localmente en tu Mac Mini. Tu información no sale de tu red doméstica a menos que lo configures explícitamente. La privacidad es uno de los pilares de AuraBot.",
+      "Sí. Tu asistente corre localmente en tu Mac Mini. Tu información no sale de tu red doméstica a menos que lo configures explícitamente. La privacidad es uno de los pilares de SekreBot.",
   },
   {
     question: "¿Cuáles son las formas de pago?",

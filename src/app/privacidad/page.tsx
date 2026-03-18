@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Política de Privacidad | AuraBot",
-  description: "Política de privacidad y protección de datos de AuraBot conforme a la Ley 19.628 de Chile.",
+  title: "Política de Privacidad | SekreBot",
+  description: "Política de privacidad y protección de datos de SekreBot conforme a la Ley 19.628 de Chile.",
 };
 
 export default function PrivacidadPage() {
@@ -15,13 +15,13 @@ export default function PrivacidadPage() {
         <section>
           <h2 className="text-xl font-semibold text-[#1a2744]">1. Responsable del tratamiento</h2>
           <p className="text-gray-600 mt-2">
-            AuraBot, con domicilio en Chile, es responsable del tratamiento de los datos personales
+            SekreBot, con domicilio en Chile, es responsable del tratamiento de los datos personales
             recopilados a través de este sitio web, conforme a la Ley N° 19.628 sobre Protección de
             la Vida Privada.
           </p>
           <p className="text-gray-600 mt-2">
             Contacto:{" "}
-            <a href="mailto:info@aurabot.cl" className="text-[#e8533a] underline">info@aurabot.cl</a>
+            <a href="mailto:info@sekrebot.cl" className="text-[#e8533a] underline">info@sekrebot.cl</a>
             {" "}| WhatsApp: +56 9 6392 6061
           </p>
         </section>
@@ -59,7 +59,7 @@ export default function PrivacidadPage() {
           </ul>
           <p className="text-gray-600 mt-2">
             Escríbenos a{" "}
-            <a href="mailto:info@aurabot.cl" className="text-[#e8533a] underline">info@aurabot.cl</a>.
+            <a href="mailto:info@sekrebot.cl" className="text-[#e8533a] underline">info@sekrebot.cl</a>.
             Respondemos en máximo 10 días hábiles.
           </p>
         </section>

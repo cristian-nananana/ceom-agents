@@ -283,7 +283,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-bold text-[#e8533a] mb-3">AuraBot</h3>
+            <h3 className="text-xl font-bold text-[#e8533a] mb-3">SekreBot</h3>
             <p className="text-white/60 text-sm leading-relaxed">
               Tu asistente de IA personal, hecho en Chile. Mac Mini + OpenClaw
               preconfigurado y listo para usarlo.
@@ -336,15 +336,15 @@ function Footer() {
                 +56 9 6392 6061 (WhatsApp)
               </a>
               <a
-                href="mailto:hola@aurabot.cl"
+                href="mailto:hola@sekrebot.cl"
                 className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                hola@aurabot.cl
+                hola@sekrebot.cl
               </a>
               <div className="flex items-center gap-3 pt-1">
                 <a
-                  href="https://instagram.com/aurabot.cl"
+                  href="https://instagram.com/sekrebot.cl"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
@@ -353,7 +353,7 @@ function Footer() {
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://twitter.com/aurabotcl"
+                  href="https://twitter.com/sekrebotcl"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Twitter / X"
@@ -367,7 +367,7 @@ function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
-          <p>© {new Date().getFullYear()} AuraBot. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} SekreBot. Todos los derechos reservados.</p>
           <div className="flex gap-4">
             <a href="/privacidad" className="hover:text-white/70 transition-colors">
               Política de privacidad
