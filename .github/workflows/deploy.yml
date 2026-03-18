@@ -15,8 +15,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: kenta-macmini/aurabot-web/package-lock.json
 
       - name: Install dependencies
         working-directory: kenta-macmini/aurabot-web
@@ -36,4 +34,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy kenta-macmini/aurabot-web/out --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME }} --branch=main
+          command: pages deploy kenta-macmini/aurabot-web/out --project-name=sekrebot-web --branch=main
