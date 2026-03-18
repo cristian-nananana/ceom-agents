@@ -801,6 +801,65 @@ export default function Home() {
       <div className="h-px" style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)" }} />
 
       {/* ════════════════════════════════════════════════
+          PILARES DIFERENCIADORES — Privacidad, Modelo, Suscripción
+      ════════════════════════════════════════════════ */}
+      <section className="py-24 sm:py-32 px-6 sm:px-8" style={{ background: "#111111" }}>
+        <div className="max-w-5xl mx-auto">
+          <SectionTitle
+            eyebrow="POR QUÉ SEKREBOT ES DIFERENTE"
+            title="Lo que nadie más te ofrece"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Privacidad */}
+            <div className="rounded-2xl p-8 border" style={{ background: "#0A0A0A", borderColor: "rgba(255,255,255,0.06)" }}>
+              <div className="text-5xl mb-6">🔒</div>
+              <h3 className="text-lg font-bold uppercase tracking-wider mb-3" style={{ color: "#00D4C8" }}>
+                Confidencial y discreto
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                Tu IA corre en tu casa. Lo que le preguntas no sale de tu red.
+                Nadie sabe qué usas ni para qué. Ni nosotros.
+                <strong style={{ color: "rgba(255,255,255,0.85)", display: "block", marginTop: "12px" }}>
+                  &ldquo;Lo que pasa en SekreBot, queda en SekreBot.&rdquo;
+                </strong>
+              </p>
+            </div>
+            {/* Modelo a medida */}
+            <div className="rounded-2xl p-8 border" style={{ background: "#0A0A0A", borderColor: "rgba(0,212,200,0.2)" }}>
+              <div className="text-5xl mb-6">🧠</div>
+              <h3 className="text-lg font-bold uppercase tracking-wider mb-3" style={{ color: "#00D4C8" }}>
+                Tú eliges el modelo de IA
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                GPT-4o, Claude, Gemini o modelos 100% locales. Te explicamos las diferencias
+                y configuramos el que más se adapta a ti y a tu presupuesto.
+                <strong style={{ color: "rgba(255,255,255,0.85)", display: "block", marginTop: "12px" }}>
+                  Sin tecnicismos. Tú decides, nosotros configuramos.
+                </strong>
+              </p>
+            </div>
+            {/* Suscripción gestionada */}
+            <div className="rounded-2xl p-8 border" style={{ background: "#0A0A0A", borderColor: "rgba(255,255,255,0.06)" }}>
+              <div className="text-5xl mb-6">💳</div>
+              <h3 className="text-lg font-bold uppercase tracking-wider mb-3" style={{ color: "#00D4C8" }}>
+                La suscripción la pagamos nosotros
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                Sin cuentas en OpenAI. Sin tarjeta de crédito internacional.
+                Sin pagar en dólares. SekreBot gestiona todo eso por ti.
+                <strong style={{ color: "rgba(255,255,255,0.85)", display: "block", marginTop: "12px" }}>
+                  Tú pagas un precio fijo en pesos chilenos. Nosotros el resto.
+                </strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Separator */}
+      <div className="h-px" style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent)" }} />
+
+      {/* ════════════════════════════════════════════════
           PRECIOS — El equipo
       ════════════════════════════════════════════════ */}
       <section
@@ -870,14 +929,14 @@ export default function Home() {
             </div>
             {/* Suscripción gestionada */}
             <div className="p-10 border" style={{ borderColor: "rgba(255,255,255,0.06)", background: "#0D0D0D" }}>
-              <div className="text-5xl mb-6">💳</div>
-              <h3 className="text-white font-bold text-xl uppercase tracking-wide mb-4">Sin cuentas extranjeras</h3>
+              <div className="text-5xl mb-6">🔑</div>
+              <h3 className="text-white font-bold text-xl uppercase tracking-wide mb-4">Tu cuenta, tus datos</h3>
               <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: "1.8" }}>
-                La suscripción a los modelos de IA la pagamos nosotros.
-                Tú no necesitas tarjeta en USD, ni cuenta en OpenAI, ni configurar APIs.
+                Tú creas tu propia cuenta en OpenAI, Claude o el modelo que elijas.
+                Nosotros la configuramos en tu equipo. Tus datos nunca pasan por nosotros.
               </p>
               <p className="mt-4 text-sm" style={{ color: "#00D4C8" }}>
-                Un precio fijo en pesos chilenos. Sin sorpresas.
+                Máxima protección de datos. Total independencia.
               </p>
             </div>
           </div>
