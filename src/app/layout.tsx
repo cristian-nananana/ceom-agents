@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Raleway, Oswald } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
@@ -7,6 +7,20 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-raleway",
+  display: "swap",
+});
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-oswald",
   display: "swap",
 });
 
@@ -166,7 +180,7 @@ export default function RootLayout({
         )}
       </head>
       <body
-        className={`${inter.variable} antialiased bg-[#0a0f1e] text-[#f9fafb]`}
+        className={`${inter.variable} ${raleway.variable} ${oswald.variable} antialiased bg-[#0A0A0A] text-[#ffffff]`}
         suppressHydrationWarning
       >
         {children}

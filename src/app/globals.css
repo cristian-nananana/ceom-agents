@@ -1,17 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg-base: #0a0f1e;
-  --color-bg-card: #111827;
-  --color-accent: #6366f1;
-  --color-accent-hover: #4f52d4;
-  --color-accent-alt: #e8533a;
-  --color-accent-alt-hover: #d44428;
-  --color-text-primary: #f9fafb;
-  --color-text-muted: #9ca3af;
-  --color-border: #1f2937;
+  --color-bg-base: #0A0A0A;
+  --color-bg-card: #111111;
+  --color-cyan: #00D4C8;
+  --color-text-primary: #ffffff;
+  --color-text-muted: rgba(255,255,255,0.6);
+  --color-border: rgba(255,255,255,0.07);
   --font-sans: var(--font-inter);
+  --font-raleway: var(--font-raleway);
+  --font-oswald: var(--font-oswald);
 }
 
 * {
