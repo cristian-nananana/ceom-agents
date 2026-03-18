@@ -1,8 +1,8 @@
-# AuraBot Web 🤖
+# SekreBot Web 🤖
 
-Landing page + panel de cliente para **AuraBot** — Mac Mini con OpenClaw preconfigurado, venta en Chile.
+Landing page + panel de cliente para **SekreBot** — Mac Mini con OpenClaw preconfigurado, venta en Chile.
 
-**URL de producción:** [aurabot.cl](https://aurabot.cl)
+**URL de producción:** [sekrebot.cl](https://sekrebot.cl)
 
 ---
 
@@ -25,8 +25,8 @@ Landing page + panel de cliente para **AuraBot** — Mac Mini con OpenClaw preco
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-org/aurabot-web.git
-cd aurabot-web
+git clone https://github.com/tu-org/sekrebot-web.git
+cd sekrebot-web
 ```
 
 ### 2. Instalar dependencias
@@ -90,7 +90,7 @@ Ve a **Settings → Secrets and variables → Actions** y agrega:
 
 ```bash
 npm run build
-npx wrangler pages deploy out --project-name=aurabot-web
+npx wrangler pages deploy out --project-name=sekrebot-web
 ```
 
 ---
@@ -98,7 +98,7 @@ npx wrangler pages deploy out --project-name=aurabot-web
 ## Estructura del proyecto
 
 ```
-aurabot-web/
+sekrebot-web/
 ├── src/
 │   ├── app/
 │   │   ├── layout.tsx       # Layout raíz + GA4 + SEO metadata
@@ -130,7 +130,7 @@ aurabot-web/
 ## Contacto
 
 - **WhatsApp:** [+56 9 6392 6061](https://wa.me/56963926061)
-- **Email:** hola@aurabot.cl
+- **Email:** hola@sekrebot.cl
 
 ---
 
