@@ -1,442 +1,504 @@
-import Hero from "@/components/ui/Hero";
-import PricingCard from "@/components/ui/PricingCard";
-import FAQ from "@/components/ui/FAQ";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
 import {
-  Package,
-  Settings,
-  Smile,
-  MapPin,
-  Mail,
-  Instagram,
-  Twitter,
-  MessageCircle,
+  Bot, Zap, Shield, MapPin, ChevronDown, Star,
+  Clock, Wrench, MessageCircle, Check, ArrowRight,
+  Cpu, Wifi, HeadphonesIcon
 } from "lucide-react";
 
-const WA_LINK = "https://wa.me/56963926061";
+const WA = "https://wa.me/56963926061";
+const WA_MSG = (msg: string) => `${WA}?text=${encodeURIComponent(msg)}`;
 
-// ─── Data ──────────────────────────────────────────────────────────────────────
+export default function Home() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-const hardwarePlans = [
-  {
-    name: "Mac Mini M4 Básico",
-    price: 839990,
-    description: "Ideal para uso personal y hogar",
-    features: [
-      "Mac Mini M4 (16GB RAM / 256GB SSD)",
-      "OpenClaw preinstalado y configurado",
-      "Cable de alimentación incluido",
-      "Guía de inicio rápido en español",
-      "Soporte por WhatsApp (30 días)",
-      "Envío gratuito en RM",
-    ],
-    ctaText: "Consultar disponibilidad",
-  },
-  {
-    name: "Mac Mini M4 Avanzado",
-    price: 1079990,
-    description: "Para profesionales y emprendedores",
-    features: [
-      "Mac Mini M4 (24GB RAM / 512GB SSD)",
-      "OpenClaw preinstalado y configurado",
-      "Configuración personalizada incluida",
-      "Soporte prioritario por WhatsApp (60 días)",
-      "Capacitación inicial de 1 hora (videollamada)",
-      "Envío gratuito a todo Chile (IV–VIII)",
-    ],
-    highlighted: true,
-    badge: "Más popular",
-    ctaText: "Lo quiero",
-  },
-  {
-    name: "Mac Mini M4 Pro",
-    price: 1679990,
-    description: "Para equipos y negocios exigentes",
-    features: [
-      "Mac Mini M4 Pro (24GB RAM / 1TB SSD)",
-      "OpenClaw Business preinstalado",
-      "Configuración empresarial completa",
-      "Integración con herramientas del negocio",
-      "Soporte dedicado 90 días",
-      "Capacitación del equipo (hasta 5 personas)",
-      "Envío gratuito prioritario",
-    ],
-    ctaText: "Cotizar para mi empresa",
-  },
-];
-
-const subscriptionPlans = [
-  {
-    name: "Básico",
-    price: 9900,
-    period: "mes",
-    description: "Para comenzar con IA",
-    features: [
-      "Acceso a modelos de IA estándar",
-      "Asistente personal 24/7",
-      "Actualizaciones automáticas",
-      "Soporte por email",
-      "1 dispositivo",
-    ],
-  },
-  {
-    name: "Pro",
-    price: 19900,
-    period: "mes",
-    description: "Para usuarios avanzados",
-    features: [
-      "Modelos de IA avanzados (GPT-4, Claude)",
-      "Prioridad en respuestas",
-      "Automatizaciones personalizadas",
-      "Soporte prioritario WhatsApp",
-      "Hasta 3 dispositivos",
-      "Acceso a beta de nuevas funciones",
-    ],
-    highlighted: true,
-    badge: "Recomendado",
-  },
-  {
-    name: "Negocio",
-    price: 39900,
-    period: "mes",
-    description: "Para equipos y empresas",
-    features: [
-      "Todo el plan Pro",
-      "Modelos personalizados para tu negocio",
-      "API access",
-      "Dashboard de uso del equipo",
-      "Dispositivos ilimitados",
-      "SLA de respuesta garantizado",
-      "Factura electrónica",
-    ],
-  },
-];
-
-const regions = [
-  { name: "Región Metropolitana", shipping: "Envío gratuito", time: "1–3 días" },
-  { name: "Región de Valparaíso (V)", shipping: "$4.990", time: "2–4 días" },
-  { name: "Región de O'Higgins (VI)", shipping: "$4.990", time: "2–4 días" },
-  { name: "Región del Maule (VII)", shipping: "$6.990", time: "3–5 días" },
-  { name: "Región del Biobío (VIII)", shipping: "$6.990", time: "3–5 días" },
-  { name: "Región de Coquimbo (IV)", shipping: "$6.990", time: "4–7 días" },
-];
-
-const steps = [
-  {
-    icon: <Package className="w-8 h-8 text-[#e8533a]" />,
-    step: "01",
-    title: "Elige tu plan",
-    desc: "Selecciona el Mac Mini que mejor se adapta a tus necesidades y presupuesto.",
-  },
-  {
-    icon: <Settings className="w-8 h-8 text-[#e8533a]" />,
-    step: "02",
-    title: "Lo preparamos para ti",
-    desc: "Instalamos y configuramos OpenClaw en tu Mac Mini antes de enviarlo. Llega listo.",
-  },
-  {
-    icon: <Smile className="w-8 h-8 text-[#e8533a]" />,
-    step: "03",
-    title: "Enchúfalo y empieza",
-    desc: "Conectas a tu televisor o monitor, enciendes y ya tienes tu asistente de IA personal.",
-  },
-];
-
-// ─── Sections ──────────────────────────────────────────────────────────────────
-
-function HowItWorks() {
   return (
-    <section id="como-funciona" className="py-20 px-4 bg-white">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-14">
-          <h2 className="section-title mb-4">¿Cómo funciona?</h2>
-          <p className="section-subtitle">
-            En tres simples pasos tienes tu asistente de IA personal funcionando.
-          </p>
-        </div>
+    <div className="min-h-screen bg-[#0a0f1e] text-white">
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {steps.map((s, i) => (
-            <div key={i} className="text-center">
-              <div className="relative inline-flex items-center justify-center w-20 h-20 bg-[#1a2744]/5 rounded-2xl mb-6 mx-auto">
-                {s.icon}
-                <span className="absolute -top-2 -right-2 bg-[#1a2744] text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
-                  {s.step}
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-[#1a2744] mb-2">
-                {s.title}
-              </h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+      {/* NAVBAR */}
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#0a0f1e]/80 backdrop-blur-xl">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 font-bold text-xl">
+            <div className="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center">
+              <Bot className="w-5 h-5 text-white" />
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function HardwarePlans() {
-  return (
-    <section id="planes" className="py-20 px-4 bg-[#f8f7f4]">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <h2 className="section-title mb-4">Planes de hardware</h2>
-          <p className="section-subtitle">
-            Todos los equipos incluyen OpenClaw preinstalado. Elige según tus
-            necesidades.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-          {hardwarePlans.map((plan, i) => (
-            <PricingCard key={i} {...plan} />
-          ))}
-        </div>
-
-        <p className="text-center text-sm text-gray-400 mt-8">
-          * Precios en pesos chilenos (CLP). IVA incluido. Sujeto a disponibilidad de stock.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-function SubscriptionPlans() {
-  return (
-    <section id="suscripcion" className="py-20 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <h2 className="section-title mb-4">Suscripción mensual</h2>
-          <p className="section-subtitle">
-            Mantén tu asistente actualizado con los mejores modelos de IA del
-            mercado.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-          {subscriptionPlans.map((plan, i) => (
-            <PricingCard key={i} {...plan} />
-          ))}
-        </div>
-
-        <p className="text-center text-sm text-gray-400 mt-8">
-          * Sin contrato. Cancela cuando quieras. Primer mes gratis con la compra de cualquier equipo.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-function Coverage() {
-  return (
-    <section id="cobertura" className="py-20 px-4 bg-[#1a2744] text-white">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-14">
-          <h2 className="text-4xl font-bold mb-4">Zonas de cobertura</h2>
-          <p className="text-white/70 text-lg max-w-xl mx-auto">
-            Enviamos a las principales regiones de Chile central.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {regions.map((region, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-4 bg-white/10 border border-white/10 rounded-xl p-4 backdrop-blur-sm"
-            >
-              <MapPin className="w-5 h-5 text-[#e8533a] flex-shrink-0" />
-              <div className="flex-grow">
-                <div className="font-semibold text-sm">{region.name}</div>
-                <div className="text-white/60 text-xs">{region.time}</div>
-              </div>
-              <div className="text-[#e8533a] font-bold text-sm whitespace-nowrap">
-                {region.shipping}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-10">
-          <p className="text-white/60 mb-4 text-sm">
-            ¿No ves tu región? Escríbenos, podemos coordinar envíos especiales.
-          </p>
+            <span>SekreBot</span>
+          </Link>
+          <div className="hidden md:flex items-center gap-8 text-sm text-gray-400">
+            <a href="#como-funciona" className="hover:text-white transition-colors">Cómo funciona</a>
+            <a href="#precios" className="hover:text-white transition-colors">Precios</a>
+            <a href="#cobertura" className="hover:text-white transition-colors">Cobertura</a>
+          </div>
           <a
-            href={WA_LINK}
+            href={WA_MSG("Hola! Quiero saber más sobre SekreBot 🤖")}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#e8533a] text-white font-semibold px-6 py-3 rounded-xl hover:bg-[#d44428] transition-colors"
+            className="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2"
           >
             <MessageCircle className="w-4 h-4" />
-            Consultar envío a mi región
+            Lo quiero
           </a>
         </div>
-      </div>
-    </section>
-  );
-}
+      </nav>
 
-function Footer() {
-  return (
-    <footer className="bg-[#0f1a2e] text-white py-12 px-4">
-      <div className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-          {/* Brand */}
-          <div>
-            <h3 className="text-xl font-bold text-[#e8533a] mb-3">SekreBot</h3>
-            <p className="text-white/60 text-sm leading-relaxed">
-              Tu asistente de IA personal, hecho en Chile. Mac Mini + OpenClaw
-              preconfigurado y listo para usarlo.
-            </p>
+      {/* HERO */}
+      <section className="pt-32 pb-24 px-4 sm:px-6 relative overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="max-w-4xl mx-auto text-center relative">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-2 text-indigo-300 text-sm font-medium mb-8">
+            <span className="w-2 h-2 bg-indigo-400 rounded-full animate-pulse" />
+            Disponible en regiones IV–VIII de Chile
           </div>
 
-          {/* Links */}
-          <div>
-            <h4 className="font-semibold mb-3 text-white/90">Navegación</h4>
-            <ul className="space-y-2 text-sm text-white/60">
-              <li>
-                <a href="#como-funciona" className="hover:text-white transition-colors">
-                  Cómo funciona
-                </a>
-              </li>
-              <li>
-                <a href="#planes" className="hover:text-white transition-colors">
-                  Planes de hardware
-                </a>
-              </li>
-              <li>
-                <a href="#suscripcion" className="hover:text-white transition-colors">
-                  Suscripción
-                </a>
-              </li>
-              <li>
-                <a href="#cobertura" className="hover:text-white transition-colors">
-                  Cobertura
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-white transition-colors">
-                  FAQ
-                </a>
-              </li>
-            </ul>
+          {/* Headline */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+            Tu secretario IA{" "}
+            <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+              personal.
+            </span>
+            <br />
+            En tu casa. Hoy.
+          </h1>
+
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Mac Mini con inteligencia artificial preinstalada y lista para usar.
+            Sin tecnicismos. Con soporte real por WhatsApp.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <a
+              href={WA_MSG("Hola! Quiero pedir mi SekreBot 🤖")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 text-lg"
+            >
+              Quiero el mío
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a
+              href="#precios"
+              className="bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 text-lg"
+            >
+              Ver precios
+            </a>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="font-semibold mb-3 text-white/90">Contacto</h4>
-            <div className="space-y-3">
-              <a
-                href={WA_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-                +56 9 6392 6061 (WhatsApp)
-              </a>
-              <a
-                href="mailto:hola@sekrebot.cl"
-                className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-                hola@sekrebot.cl
-              </a>
-              <div className="flex items-center gap-3 pt-1">
-                <a
-                  href="https://instagram.com/sekrebot.cl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="text-white/60 hover:text-white transition-colors"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://twitter.com/sekrebotcl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Twitter / X"
-                  className="text-white/60 hover:text-white transition-colors"
-                >
-                  <Twitter className="w-5 h-5" />
-                </a>
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+            {[
+              { icon: Clock, label: "Entrega en 48h", sub: "A tu puerta" },
+              { icon: Zap, label: "30 min setup", sub: "Presencial" },
+              { icon: HeadphonesIcon, label: "Soporte real", sub: "Por WhatsApp" },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-white/5 border border-white/5 rounded-xl p-4 text-center">
+                <stat.icon className="w-5 h-5 text-indigo-400 mx-auto mb-2" />
+                <div className="text-sm font-semibold">{stat.label}</div>
+                <div className="text-xs text-gray-500">{stat.sub}</div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SOCIAL PROOF */}
+      <section className="py-6 border-y border-white/5 bg-white/[0.02]">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-gray-500 text-sm">
+            Entregado a profesionales en{" "}
+            <span className="text-gray-300">Valparaíso · Rancagua · Talca · Concepción · La Serena</span>
+          </p>
+        </div>
+      </section>
+
+      {/* PROBLEMA / SOLUCIÓN */}
+      <section id="como-funciona" className="py-24 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">¿Por qué SekreBot?</h2>
+            <p className="text-gray-400 text-lg">Diseñado para quien no quiere perder tiempo con tecnología.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Problema */}
+            <div className="bg-red-950/20 border border-red-900/30 rounded-2xl p-8">
+              <div className="text-red-400 font-semibold text-sm uppercase tracking-wider mb-4">El problema hoy</div>
+              <ul className="space-y-4">
+                {[
+                  "ChatGPT en inglés y con preguntas difíciles de formular",
+                  "Configuración técnica que toma días",
+                  "Soporte que no responde o está en otro idioma",
+                  "Pagar USD mensual con tipo de cambio incierto",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-gray-400">
+                    <span className="text-red-500 mt-0.5">✗</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Solución */}
+            <div className="bg-indigo-950/20 border border-indigo-500/20 rounded-2xl p-8">
+              <div className="text-indigo-400 font-semibold text-sm uppercase tracking-wider mb-4">SekreBot lo resuelve</div>
+              <ul className="space-y-4">
+                {[
+                  "IA lista al encender — cero configuración",
+                  "En español, para profesionales chilenos",
+                  "Soporte por WhatsApp con persona real",
+                  "Precio en pesos chilenos, sin sorpresas",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-gray-300">
+                    <Check className="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
+      </section>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
-          <p>© {new Date().getFullYear()} SekreBot. Todos los derechos reservados.</p>
-          <div className="flex gap-4">
-            <a href="/privacidad" className="hover:text-white/70 transition-colors">
-              Política de privacidad
-            </a>
-            <a href="/terminos" className="hover:text-white/70 transition-colors">
-              Términos de uso
-            </a>
+      {/* FEATURES */}
+      <section className="py-16 px-4 sm:px-6 bg-white/[0.02]">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: Cpu,
+                title: "IA lista al encender",
+                desc: "OpenClaw preinstalado y configurado. Conectas el cable, enciendes y ya tienes tu asistente.",
+              },
+              {
+                icon: Shield,
+                title: "Privacidad local",
+                desc: "Tu información no sale de tu red doméstica. La IA corre en tu propio Mac Mini.",
+              },
+              {
+                icon: Wrench,
+                title: "Soporte humano real",
+                desc: "Hay una persona al otro lado del WhatsApp. Respondemos en horas, no en días.",
+              },
+            ].map((f) => (
+              <div key={f.title} className="group bg-white/[0.03] border border-white/5 hover:border-indigo-500/30 rounded-2xl p-8 transition-all duration-300">
+                <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-500/20 transition-colors">
+                  <f.icon className="w-6 h-6 text-indigo-400" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">{f.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{f.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    </footer>
-  );
-}
+      </section>
 
-// ─── Nav ──────────────────────────────────────────────────────────────────────
+      {/* PRECIOS HARDWARE */}
+      <section id="precios" className="py-24 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Elige tu equipo</h2>
+            <p className="text-gray-400">Mac Mini + OpenClaw instalado. Entrega e instalación incluidas.</p>
+          </div>
 
-function Nav() {
-  return (
-    <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="/" className="text-[#1a2744] font-bold text-xl">
-          Sekre<span className="text-[#e8533a]">Bot</span>
-        </a>
+          <div className="grid md:grid-cols-3 gap-6 mb-6">
+            {[
+              {
+                name: "M4 Básico",
+                spec: "16GB · 256GB",
+                price: "$839.990",
+                features: ["IA personal lista", "Soporte básico", "Setup presencial", "Garantía Apple"],
+                popular: false,
+              },
+              {
+                name: "M4 Avanzado",
+                spec: "24GB · 512GB",
+                price: "$1.079.990",
+                features: ["Todo lo anterior", "Mayor velocidad IA", "Multitarea fluida", "Ideal para PyMEs"],
+                popular: true,
+              },
+              {
+                name: "M4 Pro",
+                spec: "24GB · 512GB Pro",
+                price: "$1.679.990",
+                features: ["Todo lo anterior", "Máximo rendimiento", "Proyectos complejos", "Prioridad soporte"],
+                popular: false,
+              },
+            ].map((plan) => (
+              <div
+                key={plan.name}
+                className={`relative rounded-2xl p-8 flex flex-col ${
+                  plan.popular
+                    ? "bg-indigo-600 ring-2 ring-indigo-400 shadow-2xl shadow-indigo-500/20 scale-105"
+                    : "bg-white/[0.04] border border-white/5"
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-400 text-black text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide">
+                    ⭐ Más popular
+                  </div>
+                )}
+                <div className="mb-6">
+                  <h3 className="font-bold text-xl mb-1">{plan.name}</h3>
+                  <p className={`text-sm ${plan.popular ? "text-indigo-200" : "text-gray-500"}`}>{plan.spec}</p>
+                </div>
+                <div className="mb-6">
+                  <span className="text-3xl font-bold">{plan.price}</span>
+                  <span className={`text-sm ml-1 ${plan.popular ? "text-indigo-200" : "text-gray-500"}`}>CLP</span>
+                </div>
+                <ul className="space-y-3 mb-8 flex-1">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2 text-sm">
+                      <Check className={`w-4 h-4 flex-shrink-0 ${plan.popular ? "text-indigo-200" : "text-indigo-400"}`} />
+                      <span className={plan.popular ? "text-indigo-100" : "text-gray-300"}>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={WA_MSG(`Hola! Me interesa el SekreBot ${plan.name} (${plan.price} CLP)`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center justify-center gap-2 py-3 px-6 rounded-xl font-semibold transition-all duration-200 ${
+                    plan.popular
+                      ? "bg-white text-indigo-600 hover:bg-indigo-50"
+                      : "bg-indigo-600 hover:bg-indigo-500 text-white"
+                  }`}
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Lo quiero
+                </a>
+              </div>
+            ))}
+          </div>
 
-        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
-          <a href="#como-funciona" className="hover:text-[#1a2744] transition-colors">
-            Cómo funciona
-          </a>
-          <a href="#planes" className="hover:text-[#1a2744] transition-colors">
-            Planes
-          </a>
-          <a href="#suscripcion" className="hover:text-[#1a2744] transition-colors">
-            Suscripción
-          </a>
-          <a href="#faq" className="hover:text-[#1a2744] transition-colors">
-            FAQ
-          </a>
+          {/* Nota envío */}
+          <p className="text-center text-gray-500 text-sm">
+            + costo de envío según región. Entrega presencial con instalación incluida.
+          </p>
         </div>
+      </section>
 
-        <a
-          href={WA_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-primary text-sm px-4 py-2"
-        >
-          <MessageCircle className="w-4 h-4" />
-          Comprar
-        </a>
-      </div>
-    </nav>
-  );
-}
+      {/* SUSCRIPCIÓN */}
+      <section className="py-16 px-4 sm:px-6 bg-white/[0.02]">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-3">Soporte mensual</h2>
+            <p className="text-gray-400">Mantén tu IA actualizada y con soporte garantizado.</p>
+          </div>
 
-// ─── Page ──────────────────────────────────────────────────────────────────────
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              {
+                name: "Básico",
+                price: "$9.900",
+                color: "emerald",
+                features: ["Actualizaciones automáticas", "Soporte WhatsApp 48h", "Acceso a nuevas funciones"],
+              },
+              {
+                name: "Pro",
+                price: "$19.900",
+                color: "indigo",
+                features: ["Todo Básico", "Soporte prioritario 24h", "Sesión mensual optimización (30 min)"],
+                recommended: true,
+              },
+              {
+                name: "Negocio",
+                price: "$39.900",
+                color: "violet",
+                features: ["Todo Pro", "Soporte mismo día", "Capacitación mensual 1h para tu equipo"],
+              },
+            ].map((plan) => (
+              <div
+                key={plan.name}
+                className={`relative rounded-2xl p-6 border ${
+                  plan.recommended
+                    ? "border-indigo-500/40 bg-indigo-950/30"
+                    : "border-white/5 bg-white/[0.03]"
+                }`}
+              >
+                {plan.recommended && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    Recomendado
+                  </div>
+                )}
+                <h3 className="font-bold text-lg mb-1">{plan.name}</h3>
+                <div className="text-2xl font-bold mb-1">{plan.price}<span className="text-sm font-normal text-gray-400">/mes</span></div>
+                <ul className="space-y-2 mt-4">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-gray-400">
+                      <Check className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-export default function HomePage() {
-  return (
-    <>
-      <Nav />
-      <main>
-        <Hero />
-        <HowItWorks />
-        <HardwarePlans />
-        <SubscriptionPlans />
-        <Coverage />
-        <FAQ />
-      </main>
-      <Footer />
-      <WhatsAppButton />
-    </>
+      {/* COBERTURA */}
+      <section id="cobertura" className="py-24 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <MapPin className="w-10 h-10 text-indigo-400 mx-auto mb-4" />
+            <h2 className="text-4xl font-bold mb-3">Cobertura de entrega</h2>
+            <p className="text-gray-400">Llevamos tu SekreBot directamente a tu puerta.</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {[
+              { region: "IV Coquimbo", city: "La Serena", envio: "$70.000" },
+              { region: "V Valparaíso", city: "Viña del Mar", envio: "$25.000" },
+              { region: "RM Santiago", city: "Santiago", envio: "$15.000" },
+              { region: "VI O'Higgins", city: "Rancagua", envio: "$20.000" },
+              { region: "VII Maule", city: "Talca", envio: "$45.000" },
+              { region: "VIII Biobío", city: "Concepción", envio: "$75.000" },
+            ].map((r) => (
+              <div key={r.region} className="bg-white/[0.03] border border-white/5 rounded-xl p-5 flex items-center justify-between">
+                <div>
+                  <div className="font-semibold text-sm">{r.region}</div>
+                  <div className="text-gray-500 text-xs">{r.city}</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-indigo-400 font-semibold text-sm">{r.envio}</div>
+                  <div className="text-gray-500 text-xs">envío</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-gray-500 text-sm mt-6">
+            Entrega presencial con setup e instalación incluida. Mínimo 2 equipos por viaje en regiones lejanas.
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 px-4 sm:px-6 bg-white/[0.02]">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">Preguntas frecuentes</h2>
+          <div className="space-y-3">
+            {[
+              {
+                q: "¿Necesito saber de tecnología para usarlo?",
+                a: "No. Lo conectas al monitor, lo enciendes y ya está funcionando. Nosotros configuramos todo antes de llevártelo y te hacemos un tutorial de 30 minutos en tu casa.",
+              },
+              {
+                q: "¿Puedo comprar sin la suscripción mensual?",
+                a: "Sí. Puedes comprar el equipo sin suscripción y usar las funcionalidades base gratuitas de OpenClaw. La suscripción agrega soporte prioritario y actualizaciones.",
+              },
+              {
+                q: "¿Mis datos son privados?",
+                a: "Sí. Tu asistente corre localmente en tu Mac Mini. Tu información no sale de tu red a menos que tú lo configures explícitamente.",
+              },
+              {
+                q: "¿Qué pasa si el equipo falla?",
+                a: "El Mac Mini tiene garantía oficial de Apple. Si hay algún problema de software, nuestro soporte lo resuelve remotamente o con visita si es necesario.",
+              },
+              {
+                q: "¿Cuánto demora la entrega?",
+                a: "Confirmado el pago, en 48-72 horas hábiles está en tu puerta con instalación incluida.",
+              },
+            ].map((faq, i) => (
+              <div key={i} className="border border-white/5 rounded-xl overflow-hidden">
+                <button
+                  className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.03] transition-colors"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                >
+                  <span className="font-medium pr-4">{faq.q}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-indigo-400 flex-shrink-0 transition-transform duration-200 ${
+                      openFaq === i ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openFaq === i && (
+                  <div className="px-5 pb-5 text-gray-400 leading-relaxed border-t border-white/5 pt-4">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA FINAL */}
+      <section className="py-24 px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-1 mb-6">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-5 h-5 text-amber-400 fill-amber-400" />
+            ))}
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 leading-tight">
+            ¿Listo para tener tu
+            <br />
+            <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+              asistente IA?
+            </span>
+          </h2>
+          <p className="text-gray-400 text-lg mb-10">
+            Pide el tuyo hoy. Entrega en 48 horas con instalación incluida.
+          </p>
+          <a
+            href={WA_MSG("Hola! Quiero pedir mi SekreBot 🤖 ¿Cuál me recomiendas para empezar?")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-10 py-5 rounded-2xl text-xl transition-all duration-200 shadow-2xl shadow-indigo-500/25"
+          >
+            <MessageCircle className="w-6 h-6" />
+            Escribir al WhatsApp
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </a>
+          <p className="text-gray-500 text-sm mt-4">+56 9 6392 6061 · Respuesta en minutos</p>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/5 py-12 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 bg-indigo-500 rounded-lg flex items-center justify-center">
+              <Bot className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-bold">SekreBot</span>
+            <span className="text-gray-600 text-sm ml-2">Tu secretario IA personal</span>
+          </div>
+          <div className="flex items-center gap-6 text-sm text-gray-500">
+            <Link href="/privacidad" className="hover:text-white transition-colors">Privacidad</Link>
+            <Link href="/terminos" className="hover:text-white transition-colors">Términos</Link>
+            <a href={WA} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WhatsApp</a>
+            <a href="mailto:info@sekrebot.cl" className="hover:text-white transition-colors">info@sekrebot.cl</a>
+          </div>
+        </div>
+        <div className="max-w-5xl mx-auto mt-8 pt-8 border-t border-white/5 text-center text-xs text-gray-600">
+          © 2026 SekreBot. Todos los derechos reservados.
+        </div>
+      </footer>
+
+      {/* BOTÓN FLOTANTE WHATSAPP */}
+      <a
+        href={WA_MSG("Hola! Tengo una pregunta sobre SekreBot 🤖")}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-all duration-200"
+        aria-label="WhatsApp"
+      >
+        <MessageCircle className="w-6 h-6" />
+        <span className="hidden sm:inline text-sm">¿Dudas?</span>
+        <span className="absolute -top-1 -right-1 flex h-3 w-3">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
+        </span>
+      </a>
+    </div>
   );
 }

@@ -18,19 +18,20 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 export const metadata: Metadata = {
   metadataBase: new URL("https://sekrebot.cl"),
   title: {
-    default: "SekreBot — Tu asistente de IA personal con Mac Mini en Chile",
+    default: "SekreBot — Tu secretario IA personal. En tu casa. Hoy.",
     template: "%s | SekreBot",
   },
   description:
-    "SekreBot te entrega un Mac Mini con OpenClaw preconfigurado: tu asistente de IA personal listo para usarlo en casa o negocio. Envíos a regiones IV–VIII de Chile.",
+    "Mac Mini con inteligencia artificial preinstalada y lista para usar. Sin tecnicismos. Con soporte real. Envíos a regiones IV–VIII de Chile en 48 horas.",
   keywords: [
+    "secretario IA Chile",
     "asistente IA Chile",
     "Mac Mini IA",
-    "OpenClaw Chile",
     "inteligencia artificial Chile",
-    "asistente virtual Chile",
+    "asistente virtual hogar",
     "SekreBot",
-    "Mac Mini OpenClaw",
+    "IA personal Chile",
+    "automatización negocios Chile",
   ],
   authors: [{ name: "SekreBot", url: "https://sekrebot.cl" }],
   creator: "SekreBot",
@@ -40,23 +41,23 @@ export const metadata: Metadata = {
     locale: "es_CL",
     url: "https://sekrebot.cl",
     siteName: "SekreBot",
-    title: "SekreBot — Tu asistente de IA personal con Mac Mini en Chile",
+    title: "SekreBot — Tu secretario IA personal. En tu casa. Hoy.",
     description:
-      "Mac Mini + OpenClaw preconfigurado. Tu asistente de IA personal listo para usarlo desde el primer día. Envíos a regiones IV–VIII.",
+      "Mac Mini con inteligencia artificial preinstalada y lista para usar. Sin tecnicismos. Con soporte real. Envíos en 48h.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "SekreBot — Asistente de IA personal en Chile",
+        alt: "SekreBot — Secretario IA personal en Chile",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SekreBot — Tu asistente de IA personal con Mac Mini en Chile",
+    title: "SekreBot — Tu secretario IA personal. En tu casa. Hoy.",
     description:
-      "Mac Mini + OpenClaw preconfigurado. Tu asistente de IA listo desde el primer día.",
+      "Mac Mini con IA preinstalada. Sin tecnicismos. Con soporte real. Entrega en 48h.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -103,7 +104,7 @@ export default function RootLayout({
         )}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0f1e] text-[#f9fafb]`}
         suppressHydrationWarning
       >
         {children}
