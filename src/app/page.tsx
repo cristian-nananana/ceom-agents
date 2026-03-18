@@ -389,7 +389,7 @@ function Nav() {
     <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <a href="/" className="text-[#1a2744] font-bold text-xl">
-          Aura<span className="text-[#e8533a]">Bot</span>
+          Sekre<span className="text-[#e8533a]">Bot</span>
         </a>
 
         <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
