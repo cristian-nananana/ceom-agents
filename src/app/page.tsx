@@ -302,7 +302,7 @@ export default function Home() {
 
   return (
     <div
-      className="min-h-screen text-white"
+      className="min-h-screen text-white overflow-x-hidden"
       style={{ background: "#0A0A0A", fontFamily: "var(--font-raleway), var(--font-inter), sans-serif" }}
     >
 
@@ -419,7 +419,7 @@ export default function Home() {
           }}
         />
 
-        <div className="relative z-10 w-full max-w-4xl mx-auto pt-24 pb-8">
+        <div className="relative z-10 w-full max-w-4xl mx-auto pt-24 pb-8 px-4 sm:px-0">
           {/* Eyebrow */}
           <p
             className="text-[11px] uppercase font-bold tracking-[0.3em] mb-8"
@@ -1290,19 +1290,24 @@ export default function Home() {
         href={WA_MSG("Hola! Tengo una pregunta sobre SekreBot 🤖")}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 z-50 flex items-center gap-2 font-bold px-4 py-3 text-xs uppercase tracking-wider transition-all duration-200"
+        className="fixed bottom-6 right-6 z-50 flex items-center justify-center transition-all duration-300 hover:scale-110"
         style={{
+          width: 60,
+          height: 60,
+          borderRadius: "50%",
           background: "#25D366",
-          color: "#fff",
-          boxShadow: "0 4px 20px rgba(37,211,102,0.3)",
+          boxShadow: "0 4px 24px rgba(37,211,102,0.45)",
         }}
         aria-label="Contactar por WhatsApp"
       >
-        <MessageCircle className="w-5 h-5" />
-        <span className="hidden sm:inline">¿Dudas?</span>
-        <span className="absolute -top-1 -right-1 flex h-3 w-3">
+        {/* Ícono SVG oficial WhatsApp */}
+        <svg viewBox="0 0 32 32" width="30" height="30" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16.003 2C8.28 2 2 8.28 2 16.003c0 2.478.651 4.8 1.787 6.818L2 30l7.395-1.763A13.93 13.93 0 0016.003 30C23.72 30 30 23.72 30 16.003 30 8.28 23.72 2 16.003 2zm0 25.456a11.51 11.51 0 01-5.873-1.607l-.42-.25-4.39 1.047 1.066-4.277-.274-.44A11.453 11.453 0 014.544 16c0-6.319 5.14-11.457 11.459-11.457 6.317 0 11.453 5.138 11.453 11.457 0 6.316-5.136 11.456-11.453 11.456zm6.286-8.574c-.345-.172-2.04-1.006-2.355-1.12-.315-.115-.544-.172-.773.172-.228.345-.888 1.12-1.088 1.35-.2.23-.4.258-.744.086-.345-.172-1.456-.537-2.773-1.71-1.025-.913-1.717-2.04-1.918-2.385-.2-.344-.021-.53.15-.702.155-.154.345-.4.518-.6.172-.2.228-.344.343-.573.115-.229.057-.43-.028-.602-.086-.172-.773-1.865-1.059-2.554-.279-.672-.563-.58-.773-.59l-.659-.012c-.229 0-.602.086-.916.43-.315.344-1.203 1.175-1.203 2.866 0 1.692 1.232 3.328 1.404 3.557.172.228 2.426 3.706 5.878 5.197.821.354 1.463.566 1.963.724.824.263 1.574.226 2.167.137.66-.099 2.04-.834 2.327-1.638.287-.804.287-1.492.2-1.637-.085-.143-.314-.23-.659-.4z"/>
+        </svg>
+        {/* Ping animado */}
+        <span className="absolute -top-1 -right-1 flex h-4 w-4">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
+          <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500" />
         </span>
       </a>
 
