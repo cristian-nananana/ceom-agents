@@ -58,6 +58,7 @@ const NAV_LINKS: NavLink[] = [
   { href: "#precios", label: "Precios" },
   { href: "#cobertura", label: "Cobertura" },
   { href: "#contacto", label: "Contacto" },
+  { href: "/contacto", label: "Registrarme" },
 ];
 
 const STEPS = [
