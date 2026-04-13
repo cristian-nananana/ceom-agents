@@ -1,15 +1,25 @@
 import type { NextConfig } from "next";
 
+const securityHeaders = [
+  { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-XSS-Protection", value: "1; mode=block" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  {
+    key: "Content-Security-Policy",
+    value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://analytics.google.com; frame-ancestors 'none'",
+  },
+];
+
 const nextConfig: NextConfig = {
-  // NOTE: "output: export" was removed to support:
-  //   - API Routes (/api/register, /api/csrf)
-  //   - Dynamic server-side pages (/pedido/[token])
-  // Deploy to Vercel or any Node.js-compatible host (not Cloudflare Pages static).
-  // For Cloudflare Pages, use @cloudflare/next-on-pages adapter instead.
   images: {
     unoptimized: true,
   },
-  // Environment variables exposed to the browser
+  async headers() {
+    return [{ source: "/(.*)", headers: securityHeaders }];
+  },
   env: {
     NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID || "",
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || "",
